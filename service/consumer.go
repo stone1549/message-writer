@@ -157,9 +157,8 @@ func NewConsumer(config Configuration, repo MessageRepository) (Consumer, error)
 	consumer, err := kafka.NewConsumer(&kafka.ConfigMap{
 		"bootstrap.servers":        brokerStr,
 		"enable.auto.offset.store": false,
-		"message.max.bytes":        1024,
+		"message.max.bytes":        16 * 1024,
 		"enable.auto.commit":       false,
-		"enable.idempotence":       true,
 		"group.id":                 config.GetGroupId(),
 	})
 
